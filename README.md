@@ -7,3 +7,11 @@ The system allows users to:
 3. View passenger details
 4. Check available seats
 5. View seat layout
+
+How to run the program:
+
+1. Clone this repository in your workspace.
+2. Install node.js and express.js.
+3. In your terminal, type "node server.js".
+4. Click on the link it provides.
+5. Done.
