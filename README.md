@@ -15,5 +15,3 @@ How to run the program:
 3. In your terminal, type "node server.js".
 4. Click on the link it provides.
 5. Done.
-
-https://youtu.be/FbJ0WF53wdQ
