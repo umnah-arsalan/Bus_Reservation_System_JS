@@ -7,3 +7,5 @@ The system allows users to:
 3. View passenger details
 4. Check available seats
 5. View seat layout
+
+https://umnah-arsalan.github.io/Bus_Reservation_System_JS/
