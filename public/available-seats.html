@@ -9,11 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Roboto:300&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
-<body>
+<body onload="loadAvailableSeats()">
     
     <div class="container">
         <header>
-            <img src="images/pngtree-yellow-bus-sticker-on-a-white-background-clipart-vector-png-image_7020777.png" alt="Bus Reservation System Logo" width="100" height="100">
+            <a href="index.html">
+                <img src="images/pngtree-yellow-bus-sticker-on-a-white-background-clipart-vector-png-image_7020777.png" alt="Bus Reservation System Logo" width="100" height="100">
+            </a>
             <h1>Bus Reservation System</h1>
         </header>
         <nav>
@@ -24,22 +26,15 @@
             <a href="seat-layout.html">SEAT LAYOUT</a>
         </nav>
         <main>
-            <div class="shadow">
-                <h2>Welcome to the Bus Reservation System!</h2>
-            </div>
-            <div class="description">
-                <img class="rounded-corners" src="images/images.jpg" alt="Bus Picture">
-                <p>This system allows you to reserve seats with ease and convenience. Our digital system is designed to provide a seamless experience for all users. Do not need to worry about long queues or complicated processes. We make it simple and fast for you to book your bus seats.</p>
-                <p style="text-align: center;">Book your seat now!</p>
-                <div class="button-container">
-                    <a href="book-a-seat.html" class="fake-button">BOOK NOW</a>
-                </div>
+            <h2>AVAILABLE SEATS</h2>
+            <div class="seats">
+                <div class="header">Seat No</div>
+                <div class="header">Status</div>
             </div>
         </main>
-        <footer>
-            <p>&copy; 2024 Bus Reservation System. All rights reserved.</p>
+        <div class="spacer"></div>
     </div>
-    
     <script src="script.js"></script>
+    
 </body>
 </html>

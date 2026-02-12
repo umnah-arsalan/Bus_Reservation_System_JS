@@ -13,7 +13,9 @@
     
     <div class="container">
         <header>
-            <img src="images/pngtree-yellow-bus-sticker-on-a-white-background-clipart-vector-png-image_7020777.png" alt="Bus Reservation System Logo" width="100" height="100">
+            <a href="index.html">
+                <img src="images/pngtree-yellow-bus-sticker-on-a-white-background-clipart-vector-png-image_7020777.png" alt="Bus Reservation System Logo" width="100" height="100">
+            </a>
             <h1>Bus Reservation System</h1>
         </header>
         <nav>
@@ -24,22 +26,15 @@
             <a href="seat-layout.html">SEAT LAYOUT</a>
         </nav>
         <main>
-            <div class="shadow">
-                <h2>Welcome to the Bus Reservation System!</h2>
+            <h2>CANCEL BOOKING</h2>
+            <div class="inputwrapper">
+                <label for="seatNo">Seat Number:</label>
+                <input type="number" id="seatNo" name="seatNo" placeholder="Enter Seat Number" required>
             </div>
-            <div class="description">
-                <img class="rounded-corners" src="images/images.jpg" alt="Bus Picture">
-                <p>This system allows you to reserve seats with ease and convenience. Our digital system is designed to provide a seamless experience for all users. Do not need to worry about long queues or complicated processes. We make it simple and fast for you to book your bus seats.</p>
-                <p style="text-align: center;">Book your seat now!</p>
-                <div class="button-container">
-                    <a href="book-a-seat.html" class="fake-button">BOOK NOW</a>
-                </div>
-            </div>
+            <input type="submit" value="Cancel" class="mybutton" onclick="cancelBooking()">
         </main>
-        <footer>
-            <p>&copy; 2024 Bus Reservation System. All rights reserved.</p>
     </div>
-    
     <script src="script.js"></script>
+
 </body>
 </html>

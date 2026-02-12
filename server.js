@@ -8,7 +8,7 @@ app.use(express.static("public"));
 const FILE = "data/bus.json";
 const TOTAL_SEATS = 40;
 
-// Initialize seats (like initialize_seats())
+// Initialize data
 if (!fs.existsSync(FILE)) {
   fs.mkdirSync("data", { recursive: true });
   const seats = [];
@@ -24,25 +24,34 @@ if (!fs.existsSync(FILE)) {
   fs.writeFileSync(FILE, JSON.stringify(seats, null, 2));
 }
 
-// Read seats
-function getSeats() {
-  return JSON.parse(fs.readFileSync(FILE));
+function readSeats() {
+  return JSON.parse(fs.readFileSync(FILE, "utf8"));
 }
 
-// Save seats
-function saveSeats(seats) {
+function writeSeats(seats) {
   fs.writeFileSync(FILE, JSON.stringify(seats, null, 2));
 }
 
-// View seats
+// ---- API ROUTES ----
 app.get("/seats", (req, res) => {
-  res.json(getSeats());
+  try {
+    res.json(readSeats());
+  } catch (err) {
+    res.status(500).json({ error: "Failed to read seats" });
+  }
 });
 
-// Book seat
+app.get("/passengers", (req, res) => {
+  try {
+    res.json(readSeats());
+  } catch (err) {
+    res.status(500).json({ error: "Failed to read passengers" });
+  }
+});
+
 app.post("/book", (req, res) => {
   const { seat_no, name, phone } = req.body;
-  const seats = getSeats();
+  const seats = readSeats();
   const seat = seats.find(s => s.seat_no === seat_no);
 
   if (!seat || seat.is_booked) {
@@ -54,14 +63,13 @@ app.post("/book", (req, res) => {
   seat.phone = phone;
   seat.time = new Date().toLocaleString();
 
-  saveSeats(seats);
-  res.json({ message: "Seat booked" });
+  writeSeats(seats);
+  res.json({ message: "Seat booked successfully" });
 });
 
-// Cancel booking
 app.post("/cancel", (req, res) => {
-  const { seat_no } = req.body;
-  const seats = getSeats();
+  const seat_no = Number(req.body.seat_no);
+  const seats = readSeats();
   const seat = seats.find(s => s.seat_no === seat_no);
 
   if (!seat || !seat.is_booked) {
@@ -73,15 +81,11 @@ app.post("/cancel", (req, res) => {
   seat.phone = "-";
   seat.time = "";
 
-  saveSeats(seats);
+  writeSeats(seats);
   res.json({ message: "Booking cancelled" });
 });
 
-// View passengers
-app.get("/passengers", (req, res) => {
-  res.json(getSeats());
+// ---- START SERVER ----
+app.listen(3000, () => {
+  console.log("Server running at http://localhost:3000");
 });
-
-app.listen(3000, () =>
-  console.log("Server running at http://localhost:3000")
-);
